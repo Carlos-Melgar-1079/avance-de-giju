@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block cuerpo %}
+<div class="row"><!-- la fila -->
+<div class="col-sm-12 col-md-4 col-lg-4 col-xl-4"><!-- columna izquierda -->
+
+<h1>ay mama</h1>
+    <div class="card">
+        <div class="card-body">
+        <form action="registrarMateria/" method="POST"> {% csrf_token %} <!---falta action-->
+
+
+            <div class="form-grou py-3">
+                <input type="text " id="txtcodigo" name="txtcodigo" placeholder="codigo materia" minlenght="1" maxLenght"6" required>
+            </div>
+            <div class="form-group py-3">
+                <input type="text " id="txtnombre" name="txtnombre" placeholder="nombre materia" maxLenght"100" required>
+            </div>
+            <div class="form-group py-3">
+                <input type="text " id="numtelefono" name="txtnombre" placeholder="nombre materia" maxLenght"100" required>
+            </div>
+            <div class="form-group py-3">
+                <input type="text " id="numedad" name="txtnombre" placeholder="nombre materia" maxLenght"100" required>
+            </div>
+            <div class="form-group py-3">
+                <input type="text " id="numine" name="txtnombre" placeholder="nombre materia" maxLenght"100" required>
+            </div>
+            <div class="form-group py-3">
+                <input type="text " id="textpermiso" name="txtnombre" placeholder="nombre materia" maxLenght"100" required>
+            </div>
+            <div class="form-group py-3">
+                <input type="text " id="" name="textmatricula" placeholder="nombre materia" maxLenght"100" required>
+            </div>
+            
+            <div class="form-group py-2">
+                <button type="submit" class="btn btn-primary">GUARDAR MATERIA</button>
+            </div>
+        </form>
+    </div>
+    </div>
+</div><!-- columna izquierda -->
+
+<div class="col-sm-12 col-md-8 col-lg-8 col-xl-8">
+    <h1>proovedores</h1>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">nombre</th>
+                <th scope="col">telefono</th>
+                <th scope="col">edad</th>
+                <th scope="col">ine</th>
+                <th scope="col">permiso</th>
+                <th scope="col">matricula</th>
+                
+                
+            </tr>
+            </thead>
+            <tbody>
+            {% for m in mislistas %}
+                <tr>
+                    <td> {{forloop.counter}} </td>
+                    <d> {{m.codigo}} </td>
+                    <td> {{m.nombre}} </td>
+                    <td> {{m.telefono}} </td>
+                    <td> {{m.edad}} </td>
+                    <td> {{m.ine}} </td>
+                    <td> {{m.permiso}} </td>
+                    <td> {{m.matricula}} </td>
+                    <td> <a href="seleccionarMateria/{{m.codigo}}" class="btn btn-success">editar </a>  </td><!--falta-->
+                    <td> <a href="borrarMateria/{{m.codigo}}" class="btn btn-danger">borrar</a>  </td>
+                </tr>
+
+            {% endfor %}
+            
+            </tbody>
+        </table>
+</div>
+</div>
+{% endblock %}
